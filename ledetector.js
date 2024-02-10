@@ -55,7 +55,7 @@ if (!existsSync('_mods2_tmp') || process.argv.at(2) === '-r') {
     );
     
     indexBar.update(99, { status: 'Moving files' })
-    renameSync('__mods2/mods-main/mods-v2', '_mods2_tmp');
+    renameSync('__mods2/geodemodindex/mods-v2', '_mods2_tmp');
     rmSync('__mods2', { recursive: true, force: true });
 
     indexBar.update(100, { status: 'Mods index downloaded' });
