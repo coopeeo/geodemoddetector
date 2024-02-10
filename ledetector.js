@@ -9,10 +9,10 @@ import { rcompare, valid } from 'semver';
 import { marked } from 'marked';
 import { htmlEscape } from 'escape-goat';
 
-if (!existsSync('src')) {
+/*if (!existsSync('src')) {
     console.error('This script must be run in the repo root!');
     process.exit(1);
-}
+}*/
 
 const indexBar = new SingleBar({
     format: '{bar} {percentage}% {status}'
@@ -37,11 +37,33 @@ if (!existsSync('_mods_tmp') || process.argv.at(2) === '-r') {
     rmSync('__mods', { recursive: true, force: true });
 
     indexBar.update(100, { status: 'Mods index downloaded' });
+} else {
+    indexBar.update(100, { status: 'Using cached mods index' });
+}
+indexBar.stop();
+indexBar.start(100, 0, { status: 'Downloading Coop\'s mod index' });
+
+if (!existsSync('_mods2_tmp') || process.argv.at(2) === '-r') {
+    rmSync('_mods2_tmp', { recursive: true, force: true });
+
+    await pipeline(
+        got.stream('https://github.com/coopeeo/geodemodindex/archive/refs/heads/main.zip')
+            .on('downloadProgress', prog => {
+                indexBar.update(prog.percent * 99);
+            }),
+        Extract({ path: '__mods2' })
+    );
+    
+    indexBar.update(99, { status: 'Moving files' })
+    renameSync('__mods2/mods-main/mods-v2', '_mods2_tmp');
+    rmSync('__mods2', { recursive: true, force: true });
+
+    indexBar.update(100, { status: 'Mods index downloaded' });
 }
 else {
     indexBar.update(100, { status: 'Using cached mods index' });
 }
-indexBar.stop();
+
 
 const modsBar = new SingleBar({
     format: '{bar} {percentage}% {status}'
@@ -91,6 +113,38 @@ const mods = readdirSync('_mods_tmp', { withFileTypes: true })
 
 modsBar.update(100, { status: 'Mods parsed' });
 modsBar.stop();
+modsBar.start(100, 0, { status: 'Parsing mods from Coop\'s repo' });
+
+const modscompare = readdirSync('_mods2_tmp', { withFileTypes: true })
+    .filter(dir => dir.isDirectory())
+    .map((dir, i, arr) => {
+        const d = `${dir.path}/${dir.name}`;
+        modsBar.update(i / arr.length * 100);
+        return {
+            id: dir.name,
+            versions: readdirSync(d, { withFileTypes: true })
+                .filter(dir => dir.isDirectory() && valid(dir.name))
+                .map(ver => {
+                    return {
+                        version: ver.name,
+                        modJSON: JSON.parse(readFileSync(`${ver.path}/${ver.name}/mod.json`).toString()),
+                        entryJSON: JSON.parse(readFileSync(`${ver.path}/${ver.name}/entry.json`).toString()),
+                    };
+                })
+                .sort((a, b) => rcompare(a.version, b.version)),
+            about: tryReadFile(`${d}/about.md`)?.toString() ?? "No description provided",
+            // logo: tryReadFile(`${d}/logo.png`, 'media/no-logo.png'),
+            logoURL: existsSync(`${d}/logo.png`) ?
+                `https://raw.githubusercontent.com/geode-sdk/mods/main/mods-v2/${dir.name}/logo.png` :
+                `https://raw.githubusercontent.com/geode-sdk/geode/main/loader/resources/logos/no-logo.png`
+        };
+    })
+    .filter(x => {
+        let latestVer = x.versions[0];
+        let geodeVer = latestVer.modJSON.geode;
+        // Only show mods that target geode v2
+        return (geodeVer.startsWith('2.') || geodeVer.startsWith('v2.')) && !!latestVer.modJSON.gd;
+    });
 
 const genBar = new SingleBar({
     format: '{bar} {percentage}% {status}'

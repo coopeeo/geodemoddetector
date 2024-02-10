@@ -17,12 +17,26 @@ jobs:
       matrix:
         node-version: [20.x]
     runs-on: ubuntu-latest
+    
     steps:
+      - name: Checkout Index
+        uses: actions/checkout@v4
+        with:
+          repository: geode-sdk/mods
+          path: index
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          path: code
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run deploy
+      - name: Run NPM CI
+        run: |
+          cd ./code/
+          npm ci
+      - name: Run Detector
+        run: |
+          cd ./code/
+          npm run deploy
