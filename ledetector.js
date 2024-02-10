@@ -151,7 +151,7 @@ modsBar.start(100, 0, { status: 'Parsing mods from Coop\'s repo into object inst
 var modscomparereel = {}
 for (let index = 0; index < modscompare.length; index++) {
     const element = modscompare[index];
-    modscomparereel[modscompare.id] = element
+    modscomparereel[element.id] = element
     modsBar.update(index / modscompare.length * 100);
 }
 modsBar.update(100, { status: 'Mods parsed' });
