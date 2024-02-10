@@ -1,5 +1,5 @@
 
-name: Deploy static content to Pages
+name: Detect le mods
 
 on:
   push:
@@ -7,11 +7,6 @@ on:
 
   workflow_dispatch:
 
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 jobs:
   
