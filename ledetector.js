@@ -165,7 +165,7 @@ const genBar = new SingleBar({
 }, Presets.shades_classic);
 genBar.start(100, 0, { status: 'Copying files' });
 
-rmSync('gen/mods/[mod.id]', { recursive: true, force: true });
+//rmSync('gen/mods/[mod.id]', { recursive: true, force: true });
 
 genBar.update(0, { status: 'Constructing pages' });
 
