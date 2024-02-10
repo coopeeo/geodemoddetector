@@ -218,6 +218,7 @@ function developersTextOnListing(developers) {
 
 var lenumberofmod=-1
 for (const mod of mods) {
+    console.log(modscomparereel[mod.id])
     lenumberofmod+=1
     var modVersion = mod.versions[0].version
     // Compare mod to see if it updated with coop's repo
