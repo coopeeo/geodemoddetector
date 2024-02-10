@@ -220,8 +220,8 @@ function developersTextOnListing(developers) {
 
 var lenumberofmod=-1
 for (const mod of mods) {
-    console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
-    console.log(modscomparereel[mod.id])
+    //console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
+    console.log("The new versions element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id].versions)
     lenumberofmod+=1
     var modVersion = mod.versions[0].version
     // Compare mod to see if it updated with coop's repo
