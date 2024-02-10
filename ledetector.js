@@ -166,7 +166,7 @@ rmSync('gen/mods/[mod.id]', { recursive: true, force: true });
 
 genBar.update(0, { status: 'Constructing pages' });
 
-const modPageTemplate = readFileSync('src/mods/[mod.id]/index.html').toString();
+//const modPageTemplate = readFileSync('src/mods/[mod.id]/index.html').toString();
 const searchPageContent = [];
 
 function withIfEmpty(arr, elem) {
