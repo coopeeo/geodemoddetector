@@ -152,7 +152,8 @@ var modscomparereel = {}
 for (let index = 0; index < modscompare.length; index++) {
     const element = modscompare[index];
     modscomparereel[element.id] = element
-    console.log(element)
+    console.log("The og element (" + element.id + "): ",element)
+    console.log("The new element (" + element.id + "): ",element)
     //console.log(modscomparereel,modscompare[index])
     modsBar.update(index / modscompare.length * 100);
 }
@@ -219,6 +220,7 @@ function developersTextOnListing(developers) {
 
 var lenumberofmod=-1
 for (const mod of mods) {
+    console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
     console.log(modscomparereel[mod.id])
     lenumberofmod+=1
     var modVersion = mod.versions[0].version
