@@ -152,7 +152,8 @@ var modscomparereel = {}
 for (let index = 0; index < modscompare.length; index++) {
     const element = modscompare[index];
     modscomparereel[element.id] = element
-    console.log(modscomparereel,modscompare[index])
+    console.log(element)
+    //console.log(modscomparereel,modscompare[index])
     modsBar.update(index / modscompare.length * 100);
 }
 modsBar.update(100, { status: 'Mods parsed' });
