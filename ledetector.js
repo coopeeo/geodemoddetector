@@ -145,13 +145,13 @@ const modscompare = readdirSync('_mods2_tmp', { withFileTypes: true })
         // Only show mods that target geode v2
         return (geodeVer.startsWith('2.') || geodeVer.startsWith('v2.')) && !!latestVer.modJSON.gd;
     });
-
+modsBar.update(100, { status: 'Mods parsed' });
 modsBar.stop()
 modsBar.start(100, 0, { status: 'Parsing mods from Coop\'s repo into object instead of array' });
 var modscomparereel = {}
 for (let index = 0; index < modscompare.length; index++) {
     const element = modscompare[index];
-    modscomparereel[element.id] = element
+    modscomparereel[modscompare.id] = element
     modsBar.update(index / modscompare.length * 100);
 }
 modsBar.update(100, { status: 'Mods parsed' });
