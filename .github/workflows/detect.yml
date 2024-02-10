@@ -19,12 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Index
+      - name: Checkout Offical Geode Mods Index
         uses: actions/checkout@v4
         with:
           repository: geode-sdk/mods
           path: index
-      - name: Checkout
+      - name: Checkout This Repository
         uses: actions/checkout@v3
         with:
           path: code
