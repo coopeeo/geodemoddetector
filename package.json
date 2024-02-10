@@ -1,6 +1,6 @@
 {
     "scripts": {
-      "deploy": "node deploy.js"
+      "deploy": "node ledetector.js"
     },
     "devDependencies": {
       "@types/cli-progress": "^3.11.4",
