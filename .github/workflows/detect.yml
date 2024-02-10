@@ -32,11 +32,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Run NPM CI
+      - name: Run NPM CI and install actions packages for stuff
         run: |
           cd ./code/
           npm ci
-      - name: Run Detector
+          npm install @actions/core
+          npm install @actions/github
+      - name: Show Package Lock and Package
         run: |
           cd ./code/
-          npm run deploy
+          node spitoutthepackagelock.js
+      #- name: Run Detector
+      #  run: |
+      #    cd ./code/
+      #    npm run deploy

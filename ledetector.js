@@ -204,7 +204,9 @@ function developersTextOnListing(developers) {
     return developers[0] + " + " + (developers.length - 1) + " more "
 }
 
+var lenumberofmod=-1
 for (const mod of mods) {
+    lenumberofmod+=1
     var modCurrentJson = mod.versions[0].modJSON
     var modDevelopers = modCurrentJson.developers ?? [modCurrentJson.developer];
 
