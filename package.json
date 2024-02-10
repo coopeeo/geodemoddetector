@@ -1,20 +1,24 @@
 {
     "scripts": {
-      "deploy": "node ledetector.js"
+        "deploy": "node ledetector.js"
     },
     "devDependencies": {
-      "@types/cli-progress": "^3.11.4",
-      "@types/got": "^9.6.12",
-      "cli-progress": "^3.12.0",
-      "escape-goat": "^4.0.0",
-      "fs-extra": "^11.1.1",
-      "got": "^13.0.0",
-      "html-minifier": "^4.0.0",
-      "marked": "^9.1.3",
-      "npm-watch": "^0.11.0",
-      "semver": "^7.5.4",
-      "tailwindcss": "^3.2.4",
-      "unzip-stream": "^0.3.1"
+        "@types/cli-progress": "^3.11.4",
+        "@types/got": "^9.6.12",
+        "cli-progress": "^3.12.0",
+        "escape-goat": "^4.0.0",
+        "fs-extra": "^11.1.1",
+        "got": "^13.0.0",
+        "html-minifier": "^4.0.0",
+        "marked": "^9.1.3",
+        "npm-watch": "^0.11.0",
+        "semver": "^7.5.4",
+        "tailwindcss": "^3.2.4",
+        "unzip-stream": "^0.3.1"
     },
-    "type": "module"
-  }
+    "type": "module",
+    "dependencies": {
+        "@actions/core": "^1.10.1",
+        "@actions/github": "^6.0.0"
+    }
+}
