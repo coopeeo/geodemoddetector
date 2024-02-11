@@ -6,12 +6,7 @@ import zipfile
 import urllib.request
 import re
 
-#print(os.getenv('THE_OBJECT'))
-#release_url = os.getenv('LE_RELEASE')
-#urllib.request.urlretrieve((release_url + "/" + os.getenv('THE_MOD_ID') + ".geode").replace("/tag/","/download/"), 'le.geode')
-#archive = zipfile.ZipFile('le.geode', 'r')
-#e = archive.open('changelog.md')
-#file_list = archive.namelist()	
+	
 
 
 
@@ -26,7 +21,7 @@ def send_webhook(eee,modVer):
 	if eee == "No changelog provided":
 		eee = "## Le version gets replaced\r\n `no changelog (changelog.md file) found`"
 	data = {
-		'content': ("# " + eee.split("##")[1]).replace((eeeeee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
+		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
