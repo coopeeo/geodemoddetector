@@ -8,6 +8,7 @@ import { setTimeout } from 'timers/promises';
 import { compare, rcompare, valid } from 'semver';
 import { marked } from 'marked';
 import { htmlEscape } from 'escape-goat';
+const core = require('@actions/core');
 
 /*if (!existsSync('src')) {
     console.error('This script must be run in the repo root!');
@@ -152,8 +153,8 @@ var modscomparereel = {}
 for (let index = 0; index < modscompare.length; index++) {
     const element = modscompare[index];
     modscomparereel[element.id] = element
-    console.log("The og element (" + element.id + "): ",element)
-    console.log("The new element (" + element.id + "): ",element)
+    //console.log("The og element (" + element.id + "): ",element)
+    //console.log("The new element (" + element.id + "): ",element)
     //console.log(modscomparereel,modscompare[index])
     modsBar.update(index / modscompare.length * 100);
 }
@@ -217,22 +218,22 @@ function developersTextOnListing(developers) {
     if (developers.length <= 2) return developers.join(" & ");
     return developers[0] + " + " + (developers.length - 1) + " more "
 }
-
+var shouldWeUpdateIndex = false
 var lenumberofmod=-1
 for (const mod of mods) {
     if (modscomparereel[mod.id]){
     //console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
-    console.log("------------------------------------------------------------------------------- " + mod.id + " -------------------------------------------------------------------------------")
-    console.log("The new versions element in mod for state (" + mod.id + "): ",modscomparereel[mod.id].versions)
+    //console.log("------------------------------------------------------------------------------- " + mod.id + " -------------------------------------------------------------------------------")
+    //console.log("The new versions element in mod for state (" + mod.id + "): ",modscomparereel[mod.id].versions)
     lenumberofmod+=1
     var modVersion = mod.versions[0].version
     // Compare mod to see if it updated with coop's repo
-    if (modVersion == modscomparereel[mod.id].versions[0].version)
+    if (modVersion != modscomparereel[mod.id].versions[0].version){shouldWeUpdateIndex=true;}
     
 
     
     genBar.update(searchPageContent.length / mods.length * 99);
-}}
+}else{shouldWeUpdateIndex=true;}}
 
 genBar.update(99, { status: 'Writing search page' });
 genBar.update(100, { status: 'Pages finished' });
