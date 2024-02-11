@@ -21,12 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Coop's Geode Mods Index
-        uses: actions/checkout@v4
-        with:
-          repository: coopeeo/geodemodindex
-          path: index
-          token: '${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}'
       - name: Checkout This Repository
         uses: actions/checkout@v3
         with:
@@ -47,8 +41,8 @@ jobs:
           npm run deploy
       - name: Update Index
         if: steps.run_de.outputs.update_index == 'true'
-        working-directory: ${{ github.workspace }}/index
         run: |
+          git clone github.com/coopeeo/geodemodindex.git
           git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
           git remote add upstream "https://github.com/geode-sdk/mods.git"
           git pull origin mods
