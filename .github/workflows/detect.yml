@@ -50,7 +50,7 @@ jobs:
         working-directory: ${{ github.workspace }}/index
         run: |
           git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
-          git remote set-url upstream "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/geode-sdk/mods.git"
+          git remote set-url upstream "https://github.com/geode-sdk/mods.git"
           git pull origin main
           git fetch upstream
           git checkout main
