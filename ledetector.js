@@ -220,6 +220,7 @@ function developersTextOnListing(developers) {
 
 var lenumberofmod=-1
 for (const mod of mods) {
+    if (!modscomparereel[mod.id]){return;}
     //console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
     console.log("------------------------------------------------------------------------------- " + mod.id + " -------------------------------------------------------------------------------")
     console.log("The new versions element in mod for state (" + mod.id + "): ",modscomparereel[mod.id].versions)
