@@ -51,7 +51,7 @@ jobs:
         run: |
           
           
-          git remote set-url origin "https://coopeeobot:${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
+          git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
           git add -A
           git commit -m "Update all of it "
           git diff
