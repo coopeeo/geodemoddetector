@@ -20,7 +20,7 @@ def send_webhook(eee,modVer):
 	req.add_header('Content-Type', 'application/json')
 	if eee == "No changelog provided":
 		eee = "## Le version gets replaced\r\n `no changelog (changelog.md file) found`"
-	if ("# " + modVer['modJSON']['name']) not in eee.split('##')[0]:
+	if ("# " + modVer['modJSON']['name']) not in eee.split('##')[0] or ("# Changelog") not in eee.split('##')[0]:
 		eee= modVer['modJSON']['name'] + eee.replace("# ","## ")
 	data = {
 		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
