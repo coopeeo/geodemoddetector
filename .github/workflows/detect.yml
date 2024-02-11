@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Offical Geode Mods Index
+      - name: Checkout Coop's Geode Mods Index
         uses: actions/checkout@v4
         with:
-          repository: geode-sdk/mods
+          repository: coopeeo/geodemodindex
           path: index
           token: '${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}'
       - name: Checkout This Repository
@@ -49,16 +49,15 @@ jobs:
         if: steps.run_de.outputs.update_index == 'true'
         working-directory: ${{ github.workspace }}/index
         run: |
-          git init
-          git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/geode-sdk/mods.git"
+          git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
+          git remote set-url upstream "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/geode-sdk/mods.git"
           git pull origin main
+          git fetch upstream
+          git checkout main
           git config --local user.email "${{ secrets.GEODE_BOT_EMAIL }}"
           git config --local user.name "Coop's Bot"
-          
-          git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
-          git add -A
+          git rebase upstream/master
           git commit -m "Update all of it "
-          git diff
           git push -u origin main || true
       - name: Run Python
         if: steps.run_de.outputs.update_index == 'true'
