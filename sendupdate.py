@@ -40,8 +40,4 @@ def send_webhook(eee,modVer):
 
 for mod in json.loads(os.getenv('THE_OBJECT')):
 	print(mod)
-	release_url = mod['entryJSON']['mod']['download']
-	urllib.request.urlretrieve(release_url, 'le.geode')
-	archive = zipfile.ZipFile('le.geode', 'r')
-	e = archive.open('changelog.md')
-	send_webhook(e,mod)
+	send_webhook(mod['changelog'],mod)
