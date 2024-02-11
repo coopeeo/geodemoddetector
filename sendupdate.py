@@ -44,4 +44,4 @@ for mod in json.loads(os.getenv('THE_OBJECT')):
 	urllib.request.urlretrieve(release_url, 'le.geode')
 	archive = zipfile.ZipFile('le.geode', 'r')
 	e = archive.open('changelog.md')
-	send_webhook(e,json.loads(os.getenv('THE_OBJECT')))
+	send_webhook(e,mod)
