@@ -38,8 +38,6 @@ jobs:
           npm ci
 
       - name: Run Detector
-        env:
-          e: "e"
         run: |
           cd ./code/
           npm run deploy
