@@ -49,7 +49,7 @@ if (!existsSync('_mods2_tmp') || process.argv.at(2) === '-r') {
     rmSync('_mods2_tmp', { recursive: true, force: true });
 
     await pipeline(
-        got.stream('https://github.com/coopeeo/geodemodindex/archive/refs/heads/main.zip')
+        got.stream('https://github.com/coopeeo/geodemodindex/archive/refs/heads/mods.zip')
             .on('downloadProgress', prog => {
                 indexBar.update(prog.percent * 99);
             }),
@@ -57,7 +57,7 @@ if (!existsSync('_mods2_tmp') || process.argv.at(2) === '-r') {
     );
     
     indexBar.update(99, { status: 'Moving files' })
-    renameSync('__mods2/geodemodindex-main/mods-v2', '_mods2_tmp');
+    renameSync('__mods2/geodemodindex-mods/mods-v2', '_mods2_tmp');
     rmSync('__mods2', { recursive: true, force: true });
 
     indexBar.update(100, { status: 'Mods index downloaded' });
