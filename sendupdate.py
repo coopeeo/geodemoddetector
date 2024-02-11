@@ -6,7 +6,7 @@ import zipfile
 import urllib.request
 import re
 
-print(os.getenv('THE_OBJECT'))
+#print(os.getenv('THE_OBJECT'))
 #release_url = os.getenv('LE_RELEASE')
 #urllib.request.urlretrieve((release_url + "/" + os.getenv('THE_MOD_ID') + ".geode").replace("/tag/","/download/"), 'le.geode')
 #archive = zipfile.ZipFile('le.geode', 'r')
@@ -36,4 +36,11 @@ def send_webhook(eee):
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
-#send_webhook(e)
+
+
+for mod in json.loads(os.getenv('THE_OBJECT')):
+	release_url = mod.entryJSON.mod.download
+	urllib.request.urlretrieve(release_url)
+	archive = zipfile.ZipFile('le.geode', 'r')
+	e = archive.open('changelog.md')
+	send_webhook(e)

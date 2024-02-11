@@ -100,6 +100,7 @@ const mods = readdirSync('_mods_tmp', { withFileTypes: true })
                 })
                 .sort((a, b) => rcompare(a.version, b.version)),
             about: tryReadFile(`${d}/about.md`)?.toString() ?? "No description provided",
+            changelog: tryReadFile(`${d}/changelog.md`)?.toString() ?? "No changelog provided",
             // logo: tryReadFile(`${d}/logo.png`, 'media/no-logo.png'),
             logoURL: existsSync(`${d}/logo.png`) ?
                 `https://raw.githubusercontent.com/geode-sdk/mods/main/mods-v2/${dir.name}/logo.png` :
@@ -135,6 +136,7 @@ const modscompare = readdirSync('_mods2_tmp', { withFileTypes: true })
                 })
                 .sort((a, b) => rcompare(a.version, b.version)),
             about: tryReadFile(`${d}/about.md`)?.toString() ?? "No description provided",
+            changelog: tryReadFile(`${d}/changelog.md`)?.toString() ?? "No changelog provided",
             // logo: tryReadFile(`${d}/logo.png`, 'media/no-logo.png'),
             logoURL: existsSync(`${d}/logo.png`) ?
                 `https://raw.githubusercontent.com/geode-sdk/mods/main/mods-v2/${dir.name}/logo.png` :
@@ -232,7 +234,10 @@ for (const mod of mods) {
     // Compare mod to see if it updated with coop's repo
     if (modVersion != modscomparereel[mod.id].versions[0].version){
         shouldWeUpdateIndex=true;
-        theLeObject.push(mod.versions[0])
+        var daver = mod.versions[0]
+        daver.changelog = mod.changelog
+        daver.about = mod.about
+        theLeObject.push(daver)
     }
     
 
