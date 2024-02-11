@@ -220,7 +220,7 @@ function developersTextOnListing(developers) {
 
 var lenumberofmod=-1
 for (const mod of mods) {
-    if (!modscomparereel[mod.id]) return;
+    if (modscomparereel[mod.id]){
     //console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
     console.log("------------------------------------------------------------------------------- " + mod.id + " -------------------------------------------------------------------------------")
     console.log("The new versions element in mod for state (" + mod.id + "): ",modscomparereel[mod.id].versions)
@@ -232,7 +232,7 @@ for (const mod of mods) {
 
     
     genBar.update(searchPageContent.length / mods.length * 99);
-}
+}}
 
 genBar.update(99, { status: 'Writing search page' });
 genBar.update(100, { status: 'Pages finished' });
