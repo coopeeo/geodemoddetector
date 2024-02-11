@@ -57,5 +57,5 @@ def send_webhook2(eee,modVer):
 
 
 
-#for mod in json.loads(os.getenv('THE_OBJECT2')):
-#	send_webhook2(mod['changelog'],mod)
+for mod in json.loads(os.getenv('THE_OBJECT2')):
+	send_webhook2(mod['changelog'],mod)
