@@ -33,5 +33,4 @@ def send_webhook(eee,modVer):
 
 
 for mod in json.loads(os.getenv('THE_OBJECT')):
-	print(mod)
 	send_webhook(mod['changelog'],mod)
