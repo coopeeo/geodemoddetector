@@ -241,7 +241,7 @@ for (const mod of mods) {
 }else{shouldWeUpdateIndex=true;}}
 
 console.log(`::set-output name=update_index::${shouldWeUpdateIndex}`);
-console.log(`::set-output name=list_index::${theLeObject}`);
+console.log(`::set-output name=list_index::${JSON.stringify(theLeObject)}`);
 genBar.update(99, { status: 'Writing search page' });
 genBar.update(100, { status: 'Pages finished' });
 genBar.stop();
