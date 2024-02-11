@@ -39,6 +39,7 @@ def send_webhook(eee):
 
 
 for mod in json.loads(os.getenv('THE_OBJECT')):
+	print(mod)
 	release_url = mod.entryJSON.mod.download
 	urllib.request.urlretrieve(release_url)
 	archive = zipfile.ZipFile('le.geode', 'r')
