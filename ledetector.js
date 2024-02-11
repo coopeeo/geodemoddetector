@@ -8,7 +8,6 @@ import { setTimeout } from 'timers/promises';
 import { compare, rcompare, valid } from 'semver';
 import { marked } from 'marked';
 import { htmlEscape } from 'escape-goat';
-const core = require('@actions/core');
 
 /*if (!existsSync('src')) {
     console.error('This script must be run in the repo root!');
