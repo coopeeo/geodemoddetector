@@ -26,6 +26,7 @@ jobs:
         with:
           repository: geode-sdk/mods
           path: index
+          #token: '${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}'
       - name: Checkout This Repository
         uses: actions/checkout@v3
         with:
@@ -46,6 +47,7 @@ jobs:
           npm run deploy
       - name: Update Index
         if: steps.run_de.outputs.update_index == 'true'
+        working-directory: ${{ github.workspace }}/index
         run: |
           git config --local user.email "${{ secrets.GEODE_BOT_EMAIL }}"
           git config --local user.name "GeodeBot"
