@@ -50,10 +50,11 @@ jobs:
         working-directory: ${{ github.workspace }}/index
         run: |
           git config --local user.email "${{ secrets.GEODE_BOT_EMAIL }}"
-          git config --local user.name "GeodeBot"
+          git config --local user.name "Coop's Bot"
           git add -A
           git commit -m "Update all of it "
           git remote set-url origin "https://coopeeobot:${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
+          git diff
           git push -u origin main || true
       - name: Run Python
         if: steps.run_de.outputs.update_index == 'true'
