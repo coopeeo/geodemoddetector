@@ -46,6 +46,16 @@ jobs:
         if: steps.run_de.outputs.update_index == 'true'
         run: |
           echo "IT WORKED!"
+      - name: Run Python
+        if: steps.run_de.outputs.update_index == 'true'
+        id: runit
+        shell: bash
+        run: |
+          python3 code/.github/sendupdate.py
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          ROLE_ID: ${{ secrets.ROLE_ID }}
+          THE_OBJECT: ${{ steps.run_de.outputs.list_index }}
 
       # dont use unless installing packages
       #- name: Show Package Lock and Package 

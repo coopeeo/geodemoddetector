@@ -9,6 +9,8 @@ import { compare, rcompare, valid } from 'semver';
 import { marked } from 'marked';
 import { htmlEscape } from 'escape-goat';
 
+const modsToTrack = ["beat.click_sound"]
+
 /*if (!existsSync('src')) {
     console.error('This script must be run in the repo root!');
     process.exit(1);
@@ -217,8 +219,9 @@ function developersTextOnListing(developers) {
     if (developers.length <= 2) return developers.join(" & ");
     return developers[0] + " + " + (developers.length - 1) + " more "
 }
-var shouldWeUpdateIndex = true
+var shouldWeUpdateIndex = false
 var lenumberofmod=-1
+var theLeObject = []
 for (const mod of mods) {
     if (modscomparereel[mod.id]){
     //console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
@@ -227,7 +230,10 @@ for (const mod of mods) {
     lenumberofmod+=1
     var modVersion = mod.versions[0].version
     // Compare mod to see if it updated with coop's repo
-    if (modVersion != modscomparereel[mod.id].versions[0].version){shouldWeUpdateIndex=true;}
+    if (modVersion != modscomparereel[mod.id].versions[0].version){
+        shouldWeUpdateIndex=true;
+        theLeObject.push(mod.versions[0])
+    }
     
 
     
@@ -235,6 +241,7 @@ for (const mod of mods) {
 }else{shouldWeUpdateIndex=true;}}
 
 console.log(`::set-output name=update_index::${shouldWeUpdateIndex}`);
+console.log(`::set-output name=list_index::${theLeObject}`);
 genBar.update(99, { status: 'Writing search page' });
 genBar.update(100, { status: 'Pages finished' });
 genBar.stop();
