@@ -238,7 +238,7 @@ for (const mod of mods) {
 
     
     genBar.update(searchPageContent.length / mods.length * 99);
-}else{shouldWeUpdateIndex=true;}}
+}else{shouldWeUpdateIndex=true;theLeObject.push(mod.versions[0]);}}
 
 console.log(`::set-output name=update_index::${shouldWeUpdateIndex}`);
 console.log(`::set-output name=list_index::${JSON.stringify(theLeObject)}`);
