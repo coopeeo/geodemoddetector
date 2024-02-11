@@ -19,20 +19,14 @@ def send_webhook(eee,modVer):
 	from urllib import request
 	import json
 	import os
-	eeee = []
-	for eeeee in eee:
-		# print(eeeee.decode('utf-8'))
-		eeee.append(eeeee.decode('utf-8'))
-	# print(eeee)
-	eeeeee = "".join(eeee)
-	# print(eeeeee)
-	print(eeeeee.split("##")[1])
-	print((eeeeee.split("##")[1]).split("\r")[0])
+	
 	req = request.Request(os.getenv('DISCORD_WEBHOOK_URL'), method='POST')
 	req.add_header('User-Agent', 'python urllib')
 	req.add_header('Content-Type', 'application/json')
+	if eee == "No changelog provided":
+		eee = "## Le version gets replaced\r\n `no changelog (changelog.md file) found`"
 	data = {
-		'content': ("# " + eeeeee.split("##")[1]).replace((eeeeee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
+		'content': ("# " + eee.split("##")[1]).replace((eeeeee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
