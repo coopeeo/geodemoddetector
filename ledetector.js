@@ -9,7 +9,7 @@ import { compare, rcompare, valid } from 'semver';
 import { marked } from 'marked';
 import { htmlEscape } from 'escape-goat';
 
-const modsToTrack = ["beat.click_sound"]
+const modsToTrack = ["beat.click-sound"]
 
 /*if (!existsSync('src')) {
     console.error('This script must be run in the repo root!');
