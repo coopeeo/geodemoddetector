@@ -32,7 +32,7 @@ def send_webhook(eee,modVer):
 	req.add_header('User-Agent', 'python urllib')
 	req.add_header('Content-Type', 'application/json')
 	data = {
-		'content': ("# " + eeeeee.split("##")[1]).replace((eeeeee.split("##")[1]).split("\r")[0], "Click Sounds v" + modVer['version'] + " is out on Geode!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
+		'content': ("# " + eeeeee.split("##")[1]).replace((eeeeee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
