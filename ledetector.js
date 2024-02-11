@@ -234,7 +234,7 @@ for (const mod of mods) {
     genBar.update(searchPageContent.length / mods.length * 99);
 }else{shouldWeUpdateIndex=true;}}
 
-console.log(`::set-output name=updateIndex::${shouldWeUpdateIndex}`);
+console.log(`::set-output name=update_index::${shouldWeUpdateIndex}`);
 genBar.update(99, { status: 'Writing search page' });
 genBar.update(100, { status: 'Pages finished' });
 genBar.stop();

@@ -38,9 +38,14 @@ jobs:
           npm ci
 
       - name: Run Detector
+        id: run_de
         run: |
           cd ./code/
           npm run deploy
+      - name: Update Index (no worky rn)
+        if: steps.run_de.outputs.update_index == true
+        run: |
+          echo "IT WORKED!"
 
       # dont use unless installing packages
       #- name: Show Package Lock and Package 
