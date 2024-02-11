@@ -232,7 +232,7 @@ for (const mod of mods) {
     lenumberofmod+=1
     var modVersion = mod.versions[0].version
     // Compare mod to see if it updated with coop's repo
-    if (modVersion != modscomparereel[mod.id].versions[0].version && modsToTrack.includes(mod.id)){
+    if (modVersion != modscomparereel[mod.id].versions[0].version){// && modsToTrack.includes(mod.id)){
         shouldWeUpdateIndex=true;
         var daver = mod.versions[0]
         daver.changelog = mod.changelog
@@ -244,14 +244,14 @@ for (const mod of mods) {
 
     
     genBar.update(searchPageContent.length / mods.length * 99);
-}else{if(modsToTrack.includes(mod.id)){
+}else{//if(modsToTrack.includes(mod.id)){
     shouldWeUpdateIndex=true;
     var daver = mod.versions[0]
     daver.changelog = mod.changelog
     daver.about = mod.about
     daver.bundleId= mod.id
     theLeObject.push(daver)
-}}}
+}}//}
 
 console.log(`::set-output name=update_index::${shouldWeUpdateIndex}`);
 console.log(`::set-output name=list_index::${JSON.stringify(theLeObject)}`);
