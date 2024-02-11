@@ -224,6 +224,7 @@ function developersTextOnListing(developers) {
 var shouldWeUpdateIndex = false
 var lenumberofmod=-1
 var theLeObject = []
+var theLeObjectx = []
 for (const mod of mods) {
     if (modscomparereel[mod.id]){
     //console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
@@ -239,6 +240,7 @@ for (const mod of mods) {
         daver.about = mod.about
         daver.bundleId= mod.id
         theLeObject.push(daver)
+        if (modsToTrack.includes(mod.id)){theLeObjectx.push(daver);}
     }
     
 
@@ -251,10 +253,12 @@ for (const mod of mods) {
     daver.about = mod.about
     daver.bundleId= mod.id
     theLeObject.push(daver)
+    if (modsToTrack.includes(mod.id)){theLeObjectx.push(daver);}
 }}//}
 
 console.log(`::set-output name=update_index::${shouldWeUpdateIndex}`);
 console.log(`::set-output name=list_index::${JSON.stringify(theLeObject)}`);
+console.log(`::set-output name=list_indexx::${JSON.stringify(theLeObjectx)}`);
 genBar.update(99, { status: 'Writing search page' });
 genBar.update(100, { status: 'Pages finished' });
 genBar.stop();

@@ -63,8 +63,11 @@ jobs:
           python3 code/sendupdate.py
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL2: ${{ secrets.DISCORD_WEBHOOK_URL_2 }}
           ROLE_ID: ${{ secrets.ROLE_ID }}
+          ROLE_ID2: ${{ secrets.ROLE_ID_2 }}
           THE_OBJECT: ${{ steps.run_de.outputs.list_index }}
+          THE_OBJECT2: ${{ steps.run_de.outputs.list_indexx }}
 
       # dont use unless installing packages
       #- name: Show Package Lock and Package 
