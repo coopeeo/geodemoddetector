@@ -23,8 +23,11 @@ def send_webhook(eee,modVer):
 	print(eee)
 	if ("# " + modVer['modJSON']['name']) not in eee.split('##')[0] and ("# Changelog") not in eee.split('##')[0]:
 		eee= modVer['modJSON']['name'] + eee.replace("# ","## ")
+	shouldslashn = "\n"
+	if "\n" in eee.split("##")[1].split("*")[eee.split("##")[1].split("*").length - 1]:
+		shouldslashn = ""
 	data = {
-		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + "\nDownload or Update in Geometry Dash right now!\n[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
+		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + shouldslashn + "Download or Update in Geometry Dash right now!\n[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
