@@ -237,6 +237,7 @@ for (const mod of mods) {
         var daver = mod.versions[0]
         daver.changelog = mod.changelog
         daver.about = mod.about
+        daver.bundleId= mod.id
         theLeObject.push(daver)
     }
     
