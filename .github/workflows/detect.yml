@@ -1,5 +1,5 @@
 
-name: Detect le mods
+name: Detect Mods
 
 on:
   push:
