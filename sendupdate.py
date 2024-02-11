@@ -27,7 +27,7 @@ def send_webhook(eee,modVer):
 	if "\n" in eee.split("##")[1].split("*")[len(eee.split("##")[1].split("*")) - 1]:
 		shouldslashn = "\n"
 	data = {
-		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + shouldslashn + "Download or Update in Geometry Dash right now!\n[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
+		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + shouldslashn + "[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\nDownload or Update in Geometry Dash right now!\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
