@@ -42,8 +42,9 @@ jobs:
       - name: Update Index
         if: steps.run_de.outputs.update_index == 'true'
         run: |
-          git clone github.com/coopeeo/geodemodindex.git
-          git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
+          git clone https://github.com/coopeeo/geodemodindex.git
+          cd geodemodindex
+          # git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
           git remote add upstream "https://github.com/geode-sdk/mods.git"
           git pull origin mods
           git fetch upstream
