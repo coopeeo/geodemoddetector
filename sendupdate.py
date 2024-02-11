@@ -15,7 +15,7 @@ import re
 
 
 
-def send_webhook(eee):
+def send_webhook(eee,modVer):
 	from urllib import request
 	import json
 	import os
@@ -32,7 +32,7 @@ def send_webhook(eee):
 	req.add_header('User-Agent', 'python urllib')
 	req.add_header('Content-Type', 'application/json')
 	data = {
-		'content': ("# " + eeeeee.split("##")[1]).replace((eeeeee.split("##")[1]).split("\r")[0], "Click Sounds " + os.getenv('TAG').split("-")[1] + " is out on Github!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n" + release_url,
+		'content': ("# " + eeeeee.split("##")[1]).replace((eeeeee.split("##")[1]).split("\r")[0], "Click Sounds v" + modVer['version'] + " is out on Geode!") + "\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
@@ -44,4 +44,4 @@ for mod in json.loads(os.getenv('THE_OBJECT')):
 	urllib.request.urlretrieve(release_url, 'le.geode')
 	archive = zipfile.ZipFile('le.geode', 'r')
 	e = archive.open('changelog.md')
-	send_webhook(e)
+	send_webhook(e,json.loads(os.getenv('THE_OBJECT')))
