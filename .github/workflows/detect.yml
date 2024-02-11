@@ -51,14 +51,14 @@ jobs:
         run: |
           git remote set-url origin "https://${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}@github.com/coopeeo/geodemodindex.git"
           git remote add upstream "https://github.com/geode-sdk/mods.git"
-          git pull origin main
+          git pull origin mods
           git fetch upstream
-          git checkout main
+          git checkout mods
           git config --local user.email "${{ secrets.GEODE_BOT_EMAIL }}"
           git config --local user.name "Coop's Bot"
-          git merge upstream/main
+          git rebase upstream/main
           git commit -m "Update all of it "
-          git push -u origin main || true
+          git push -u origin mods || true
       - name: Run Python
         if: steps.run_de.outputs.update_index == 'true'
         id: runit
