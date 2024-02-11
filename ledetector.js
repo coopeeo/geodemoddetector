@@ -217,7 +217,7 @@ function developersTextOnListing(developers) {
     if (developers.length <= 2) return developers.join(" & ");
     return developers[0] + " + " + (developers.length - 1) + " more "
 }
-var shouldWeUpdateIndex = false
+var shouldWeUpdateIndex = true
 var lenumberofmod=-1
 for (const mod of mods) {
     if (modscomparereel[mod.id]){
