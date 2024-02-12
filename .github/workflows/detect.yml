@@ -39,7 +39,9 @@ jobs:
           npm run deploy
       - name: Update Index
         if: steps.run_de.outputs.update_index == 'true'
+        id: theGit
         run: |
+          echo "mum=false" >> $GITHUB_OUTPUT
           git config --global user.email "${{ secrets.GEODE_BOT_EMAIL }}"
           git config --global user.name "Coop's Bot"
           git clone https://github.com/coopeeo/geodemodindex.git
@@ -55,6 +57,19 @@ jobs:
           git checkout mods
           git rebase upstream/main
           git push -f origin mods || true
+          echo "mum=true" >> $GITHUB_OUTPUT
+      - name: Update Coop's Geode Website (via action)
+        if: steps.run_de.outputs.update_index == 'true' && steps.theGit.outputs.mum == 'true'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GEODE_BOT_PUSH_BIN_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+                owner: 'coopeeo',
+                repo: 'geode-website',
+                workflow_id: 'build.yml',
+                ref: 'main'
+            })
       - name: Run Python
         if: steps.run_de.outputs.update_index == 'true'
         id: runit
