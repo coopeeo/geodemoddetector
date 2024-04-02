@@ -239,6 +239,9 @@ for (const mod of mods) {
         daver.changelog = mod.changelog
         daver.about = mod.about
         daver.bundleId= mod.id
+        daver.tags = "arrow_up"
+        daver.tags2 = "Update"
+        daver.tags3 = "update"
         theLeObject.push(daver)
         if (modsToTrack.includes(mod.id)){theLeObjectx.push(daver);}
     }
@@ -252,6 +255,9 @@ for (const mod of mods) {
     daver.changelog = mod.changelog
     daver.about = mod.about
     daver.bundleId= mod.id
+    daver.tags = "heavy_plus_sign"
+    daver.tags2 = "New Mod"
+    daver.tags3 = "new"
     theLeObject.push(daver)
     if (modsToTrack.includes(mod.id)){theLeObjectx.push(daver);}
 }}//}

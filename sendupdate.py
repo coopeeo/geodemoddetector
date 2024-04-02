@@ -4,6 +4,7 @@ import os
 import sys
 import zipfile
 import urllib.request
+import requests
 import re
 
 	
@@ -50,8 +51,9 @@ def send_webhook2(eee,modVer):
 	shouldslashn = "\n\n"
 	if "\n" in eee.split("##")[1].split("*")[len(eee.split("##")[1].split("*")) - 1]:
 		shouldslashn = "\n"
+	title = (eee.split("##")[1].split("\r")[0]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!")
 	data = {
-		'content': ("# Mod Updates\n# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + shouldslashn + "[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\nDownload or Update in Geometry Dash right now!\n||<@&" + os.getenv('ROLE_ID2') + ">||\n",
+		'content': ("# :" + modVer["tags"] + ": " + modVer["tags2"] + "\n# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + shouldslashn + "[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\nDownload or Update in Geometry Dash right now!\n||<@&" + os.getenv('ROLE_ID2') + ">||\n",
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
