@@ -83,6 +83,7 @@ jobs:
           ROLE_ID2: ${{ secrets.ROLE_ID_2 }}
           THE_OBJECT: ${{ steps.run_de.outputs.list_indexx }}
           THE_OBJECT2: ${{ steps.run_de.outputs.list_index }}
+          NTFY_GROUP: ${{ secrets.NTFY_GROUP }}
 
       # dont use unless installing packages
       #- name: Show Package Lock and Package 
