@@ -59,9 +59,9 @@ def send_webhook2(eee,modVer):
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
 	requests.post("https://ntfy.sh/",
-    data=json.dumps({
+    		data=json.dumps({
 			"topic": os.getenv('NTFY_GROUP'),
-			"message": "message,
+			"message": message,
 			"title": modVer["tags2"] + "m",
 			"tags": [modVer["tags"],modVer["tags3"]],
 			"icon": "https://raw.githubusercontent.com/geode-sdk/mods/main/mods-v2/" + modVer["bundleId"] + "/logo.png",
