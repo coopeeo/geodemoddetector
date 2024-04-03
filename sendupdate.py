@@ -52,7 +52,7 @@ def send_webhook2(eee,modVer):
 	if "\n" in eee.split("##")[1].split("*")[len(eee.split("##")[1].split("*")) - 1]:
 		shouldslashn = "\n"
 	title = (eee.split("##")[1].split("\r")[0]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!")
-	message = eee.split("##")[1].replace(eee.split("##")[1].split("\r")[1] + "\r\n", "")
+	message = eee.split("##")[1].replace(eee.split("##")[1].split("\r")[0] + "\r\n", "")
 	data = {
 		'content': ("# :" + modVer["tags"] + ": " + modVer["tags2"] + "\n# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on Geode!") + shouldslashn + "[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\nDownload or Update in Geometry Dash right now!\n||<@&" + os.getenv('ROLE_ID2') + ">||\n",
 	}
@@ -62,7 +62,7 @@ def send_webhook2(eee,modVer):
     		data=json.dumps({
 			"topic": os.getenv('NTFY_GROUP'),
 			"message": message,
-			"title": modVer["tags2"] + "m",
+			"title": modVer["tags2"] + " | " + title,
 			"tags": [modVer["tags"],modVer["tags3"]],
 			"markdown": True,
 			"icon": "https://raw.githubusercontent.com/geode-sdk/mods/main/mods-v2/" + modVer["bundleId"] + "/logo.png",
