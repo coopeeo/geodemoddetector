@@ -64,6 +64,7 @@ def send_webhook2(eee,modVer):
 			"message": message,
 			"title": modVer["tags2"] + "m",
 			"tags": [modVer["tags"],modVer["tags3"]],
+			"markdown": True,
 			"icon": "https://raw.githubusercontent.com/geode-sdk/mods/main/mods-v2/" + modVer["bundleId"] + "/logo.png",
 			"click": "https://geode-sdk.org/mods/" + modVer['bundleId']
 		})
