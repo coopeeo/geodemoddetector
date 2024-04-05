@@ -266,6 +266,8 @@ for (const mod of mods) {
     daver.tags3 = "new"
     theLeObject.push(daver)
     if (modsToTrack.includes(mod.id)){theLeObjectx.push(daver);}
+    if (modsToTrack2.includes(mod.id)){theLeObjectxxx.push(daver);}
+    if (modsToTrack3.includes(mod.id)){theLeObjectxxxx.push(daver);}
 }}//}
 
 console.log(`::set-output name=update_index::${shouldWeUpdateIndex}`);
