@@ -79,10 +79,14 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           DISCORD_WEBHOOK_URL2: ${{ secrets.DISCORD_WEBHOOK_URL_2 }}
+          DISCORD_WEBHOOK_URL3: ${{ secrets.DISCORD_WEBHOOK_URL_3 }}
+          DISCORD_WEBHOOK_URL4: ${{ secrets.DISCORD_WEBHOOK_URL_4 }}
           ROLE_ID: ${{ secrets.ROLE_ID }}
           ROLE_ID2: ${{ secrets.ROLE_ID_2 }}
           THE_OBJECT: ${{ steps.run_de.outputs.list_indexx }}
           THE_OBJECT2: ${{ steps.run_de.outputs.list_index }}
+          THE_OBJECT3: ${{ steps.run_de.outputs.list_indexxx }}
+          THE_OBJECT4: ${{ steps.run_de.outputs.list_indexxxx }}
           NTFY_GROUP: ${{ secrets.NTFY_GROUP }}
 
       # dont use unless installing packages

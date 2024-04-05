@@ -9,7 +9,9 @@ import { compare, rcompare, valid } from 'semver';
 import { marked } from 'marked';
 import { htmlEscape } from 'escape-goat';
 
-const modsToTrack = ["beat.click-sound"]
+const modsToTrack = ["beat.click-sound"] // click sounds server
+const modsToTrack2 = ["uproxide.user_reviews"] // user reviews server
+const modsToTrack3 = ["uproxide.user_reviews", "uproxide.geodedevelopers", "uproxide.accupracatt", "uproxide.autosong", "uproxide.more_difficulties", "uproxide.evilgd", "uproxide.quotes", "riley.nogrounds", "thesillydoggo.icon_kit_switcher"] // uproxides little land
 
 /*if (!existsSync('src')) {
     console.error('This script must be run in the repo root!');
@@ -225,6 +227,8 @@ var shouldWeUpdateIndex = false
 var lenumberofmod=-1
 var theLeObject = []
 var theLeObjectx = []
+var theLeObjectxxx = []
+var theLeObjectxxxx = []
 for (const mod of mods) {
     if (modscomparereel[mod.id]){
     //console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
@@ -244,6 +248,8 @@ for (const mod of mods) {
         daver.tags3 = "update"
         theLeObject.push(daver)
         if (modsToTrack.includes(mod.id)){theLeObjectx.push(daver);}
+        if (modsToTrack2.includes(mod.id)){theLeObjectxxx.push(daver);}
+        if (modsToTrack3.includes(mod.id)){theLeObjectxxxx.push(daver);}
     }
     
 
@@ -265,6 +271,8 @@ for (const mod of mods) {
 console.log(`::set-output name=update_index::${shouldWeUpdateIndex}`);
 console.log(`::set-output name=list_index::${JSON.stringify(theLeObject)}`);
 console.log(`::set-output name=list_indexx::${JSON.stringify(theLeObjectx)}`);
+console.log(`::set-output name=list_indexxx::${JSON.stringify(theLeObjectxxx)}`);
+console.log(`::set-output name=list_indexxxx::${JSON.stringify(theLeObjectxxxx)}`);
 genBar.update(99, { status: 'Writing search page' });
 genBar.update(100, { status: 'Pages finished' });
 genBar.stop();
