@@ -12,6 +12,7 @@ import { htmlEscape } from 'escape-goat';
 const modsToTrack = ["beat.click-sound"] // click sounds server
 const modsToTrack2 = ["uproxide.user_reviews"] // user reviews server
 const modsToTrack3 = ["uproxide.user_reviews", "uproxide.geodedevelopers", "uproxide.accupracatt", "uproxide.autosong", "uproxide.more_difficulties", "uproxide.evilgd", "uproxide.quotes", "riley.nogrounds", "thesillydoggo.icon_kit_switcher"] // uproxides little land
+const modsToTrack4 = ["cdc.level_thumbnailss"] // Level Thumbnails server
 
 /*if (!existsSync('src')) {
     console.error('This script must be run in the repo root!');

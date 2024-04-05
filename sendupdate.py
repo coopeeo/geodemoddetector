@@ -74,11 +74,31 @@ def send_webhook4(eee,modVer):
 		eee = "## Le version gets replaced\r\n* `no changelog (changelog.md file) found`\n"
 	if ("# " + modVer['modJSON']['name']) not in eee.split('##')[0] and ("# Changelog") not in eee.split('##')[0]:
 		eee= modVer['modJSON']['name'] + eee.replace("# ","## ")
-	shouldslashn = "\n\n"
-	if "\n" in eee.split("##")[1].split("*")[len(eee.split("##")[1].split("*")) - 1]:
-		shouldslashn = "\n"
+	message = eee.split("##")[1].replace(eee.split("##")[1].split("\r")[0] + "\r\n", "")
 	data = {
-		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version']) + shouldslashn + "[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\nDownload or Update in Geometry Dash right now!\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
+		"content": null,
+		"embeds": [
+			{
+			"description": "# New Update!\n### - Version: v" + modVer['version'],
+			"color": 16644552,
+			"fields": [
+				{
+					"name": "Changelog",
+					"value": message
+				}
+			],
+			"author": {
+				"name": "Level Thumbnails"
+			},
+			"footer": {
+				"text": "Download in Geometry Dash right now!"
+			},
+			"thumbnail": {
+				"url": "https://github.com/cdc-sys/level-thumbs-mod/blob/main/logo.png?raw=true"
+			}
+			}
+		],
+		"attachments": []
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
