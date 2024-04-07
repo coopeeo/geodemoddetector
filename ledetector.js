@@ -276,6 +276,7 @@ console.log(`::set-output name=list_index::${JSON.stringify(theLeObject)}`);
 console.log(`::set-output name=list_indexx::${JSON.stringify(theLeObjectx)}`);
 console.log(`::set-output name=list_indexxx::${JSON.stringify(theLeObjectxxx)}`);
 console.log(`::set-output name=list_indexxxx::${JSON.stringify(theLeObjectxxxx)}`);
+console.log(`::set-output name=list_indexxxxx::${JSON.stringify(theLeObjectxxxxx)}`);
 genBar.update(99, { status: 'Writing search page' });
 genBar.update(100, { status: 'Pages finished' });
 genBar.stop();
