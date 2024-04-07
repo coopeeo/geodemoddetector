@@ -16,7 +16,7 @@ def send_webhook(eee,modVer):
 	import json
 	import os
 	
-	req = request.Request(os.getenv('DISCORD_WEBHOOK_URL'), method='POST')
+	req = request.Request(os.getenv('DISCORD_WEBHOOK_URL3'), method='POST')
 	req.add_header('User-Agent', 'python urllib')
 	req.add_header('Content-Type', 'application/json')
 	if eee == "No changelog provided":
@@ -62,7 +62,7 @@ def send_webhook3(eee,modVer):
 	import json
 	import os
 	
-	req = request.Request(os.getenv('DISCORD_WEBHOOK_URL'), method='POST')
+	req = request.Request(os.getenv('DISCORD_WEBHOOK_URL4'), method='POST')
 	req.add_header('User-Agent', 'python urllib')
 	req.add_header('Content-Type', 'application/json')
 	if eee == "No changelog provided":
@@ -104,7 +104,7 @@ def send_webhook4(eee,modVer):
 	import json
 	import os
 	
-	req = request.Request(os.getenv('DISCORD_WEBHOOK_URL'), method='POST')
+	req = request.Request(os.getenv('DISCORD_WEBHOOK_URL5'), method='POST')
 	req.add_header('User-Agent', 'python urllib')
 	req.add_header('Content-Type', 'application/json')
 	if eee == "No changelog provided":
