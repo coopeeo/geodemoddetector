@@ -230,6 +230,7 @@ var theLeObject = []
 var theLeObjectx = []
 var theLeObjectxxx = []
 var theLeObjectxxxx = []
+var theLeObjectxxxxx = []
 for (const mod of mods) {
     if (modscomparereel[mod.id]){
     //console.log("The new element in mod for state (" + modscomparereel[mod.id].id + "): ",modscomparereel[mod.id])
