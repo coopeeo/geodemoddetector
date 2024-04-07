@@ -50,7 +50,7 @@ def send_webhook4(eee,modVer):
 		eee= modVer['modJSON']['name'] + eee.replace("# ","## ")
 	message = eee.split("##")[1].replace(eee.split("##")[1].split("\r")[0] + "\r\n", "")
 	data = {
-		"content": "no ping",
+		"content": "@everyone",
 		"embeds": [
 			{
 				"description": "# New Update!\n### - Version: v" + modVer['version'],
@@ -92,7 +92,7 @@ def send_webhook3(eee,modVer):
 		eee= modVer['modJSON']['name'] + eee.replace("# ","## ")
 	message = eee.split("##")[1].replace(eee.split("##")[1].split("\r")[0] + "\r\n", "")
 	data = {
-		"content": "no ping",
+		"content": "@everyone",
 		"embeds": [
 			{
 				"description": "# New Update!\n### - Version: v" + modVer['version'],
