@@ -23,11 +23,31 @@ def send_webhook(eee,modVer):
 		eee = "## Le version gets replaced\r\n* `no changelog (changelog.md file) found`\n"
 	if ("# " + modVer['modJSON']['name']) not in eee.split('##')[0] and ("# Changelog") not in eee.split('##')[0]:
 		eee= modVer['modJSON']['name'] + eee.replace("# ","## ")
-	shouldslashn = "\n\n"
-	if "\n" in eee.split("##")[1].split("*")[len(eee.split("##")[1].split("*")) - 1]:
-		shouldslashn = "\n"
+	message = eee.split("##")[1].replace(eee.split("##")[1].split("\r")[0] + "\r\n", "")
 	data = {
-		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version'] + " is out on the Geode Index!") + shouldslashn + "[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\nDownload or Update in Geometry Dash right now!\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
+		"content": "@everyone",
+		"embeds": [
+			{
+				"description": "# New Update!\n### - Version: v" + modVer['version'],
+				"color": 16307200,
+				"fields": [
+					{
+						"name": "Changelog",
+						"value": message
+					}
+				],
+				"author": {
+					"name": "User Reviews"
+				},
+				"footer": {
+					"text": "Download in Geometry Dash right now!"
+				},
+				"thumbnail": {
+					"url": "https://raw.githubusercontent.com/Uproxide/user-reviews/main/logo.png"
+				}
+			}
+		],
+		"attachments": []
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
@@ -49,11 +69,28 @@ def send_webhook3(eee,modVer):
 		eee = "## Le version gets replaced\r\n* `no changelog (changelog.md file) found`\n"
 	if ("# " + modVer['modJSON']['name']) not in eee.split('##')[0] and ("# Changelog") not in eee.split('##')[0]:
 		eee= modVer['modJSON']['name'] + eee.replace("# ","## ")
-	shouldslashn = "\n\n"
-	if "\n" in eee.split("##")[1].split("*")[len(eee.split("##")[1].split("*")) - 1]:
-		shouldslashn = "\n"
+	message = eee.split("##")[1].replace(eee.split("##")[1].split("\r")[0] + "\r\n", "")
 	data = {
-		'content': ("# " + eee.split("##")[1]).replace((eee.split("##")[1]).split("\r")[0], modVer['modJSON']['name'] + " v" + modVer['version']) + shouldslashn + "[View Mod](<https://geode-sdk.org/mods/" + modVer['bundleId'] + ">)\nDownload or Update in Geometry Dash right now!\n||<@&" + os.getenv('ROLE_ID') + ">||\n",
+		"content": "@everyone",
+		"embeds": [
+			{
+				"description": "# New Update!\n### - Version: v" + modVer['version'],
+				"color": 16307200,
+				"fields": [
+					{
+						"name": "Changelog",
+						"value": message
+					}
+				],
+				"author": {
+					"name": modVer["modJSON"]["name"]
+				},
+				"footer": {
+					"text": "Download in Geometry Dash right now!"
+				}
+			}
+		],
+		"attachments": []
 	}
 	request.urlopen(req, data=json.dumps(data).encode('utf-8'))
 
