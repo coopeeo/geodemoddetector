@@ -65,6 +65,9 @@ def send_webhook4(eee,modVer):
 				},
 				"footer": {
 					"text": "Download in Geometry Dash right now!"
+				},
+				"thumbnail": {
+					"url": "https://raw.githubusercontent.com/geode-sdk/mods/main/mods-v2/" + modVer['modJSON']["id"] + "/logo.png"
 				}
 			}
 		],
@@ -140,23 +143,23 @@ def send_webhook5(eee,modVer):
 		"content": "",
 		"embeds": [
 			{
-			"description": "# New Update!\n### - Version: v" + modVer['version'],
-			"color": 16644552,
-			"fields": [
-				{
-					"name": "Changelog",
-					"value": message
+				"description": "# New Update!\n### - Version: v" + modVer['version'],
+				"color": 16644552,
+				"fields": [
+					{
+						"name": "Changelog",
+						"value": message
+					}
+				],
+				"author": {
+					"name": "Level Thumbnails"
+				},
+				"footer": {
+					"text": "Download in Geometry Dash right now!"
+				},
+				"thumbnail": {
+					"url": "https://github.com/cdc-sys/level-thumbs-mod/blob/main/logo.png?raw=true"
 				}
-			],
-			"author": {
-				"name": "Level Thumbnails"
-			},
-			"footer": {
-				"text": "Download in Geometry Dash right now!"
-			},
-			"thumbnail": {
-				"url": "https://github.com/cdc-sys/level-thumbs-mod/blob/main/logo.png?raw=true"
-			}
 			}
 		],
 		"attachments": []
